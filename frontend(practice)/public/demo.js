@@ -1,6 +1,6 @@
 /* React 컴포넌트 --------------------------------------------------------------- */
 
-// 함수(형) 컴포넌트
+// 함수(형) 컴포넌트 (group 현재 랜더부분에서 주석처리 함)
 function Group(props) {
   console.log(props.lang);
   console.log(props.content);
@@ -71,7 +71,7 @@ reactDomRoot.render(
   <React.Fragment>
     {/* <Group lang="es" content="sit amet consectetur." />
     <Group lang="ru" content="Далеко-далеко за словесными горами." /> */}
-    <App />
+    {/* <App /> */}
   </React.Fragment>
 );
 
@@ -84,3 +84,40 @@ reactDomRoot.render(
 //   // without JSX
 //   React.createElement("div", { role: "gorup", lang: "en" }, React.createElement(Logo), React.createElement(Logo), React.createElement(Logo))
 // );
+
+//
+// 버튼 생성 후 클릭하면 숫자 1씩 증가 만들어보기
+class Btn extends React.Component {
+  state = {
+    number: 0,
+  };
+
+  render() {
+    const { number } = this.state;
+
+    return (
+      <div className="container">
+        <div className="numberBox">Number : {number}</div>
+        <button
+          type="button"
+          id="plusBtn"
+          onClick={() => {
+            if (number < 10) {
+              this.setState({
+                number: number + 1,
+              });
+            } else {
+              this.setState({
+                number: 0,
+              });
+            }
+          }}
+        >
+          COUNT BUTTON
+        </button>
+      </div>
+    );
+  }
+}
+
+reactDomRoot.render(<Btn />);
