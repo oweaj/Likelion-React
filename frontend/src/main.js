@@ -11,3 +11,7 @@ console.log(React.createElement("details"));
 // 사용법 2
 // 컴포넌트 함수 또는 클래스 참조 전달
 console.log(React.createElement(Group));
+
+const reactDomRoot = ReactDOM.createRoot(document.getElementById("root"));
+
+reactDomRoot.render([React.createElement(Group), React.createElement(Group), React.createElement(Group), React.createElement(Group)]);
