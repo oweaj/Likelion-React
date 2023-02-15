@@ -1,16 +1,20 @@
 ###### EUID ╳ Likelion
 
-# 웹 브라우저 환경에서 React 시작하기
+# JSX & React
 
 학습 저장소 자료 복사 ([degit](https://github.com/Rich-Harris/degit#readme) 활용)
 
 ```sh
-degit yamoo9/likelion-react#01-react-browser 01-react-browser
+degit yamoo9/likelion-react#03-jsx-in-depth 03-jsx-in-depth
 ```
 
 ## 학습 목표
 
-React 라이브러리 코드가 웹 브라우저 환경에서 어떻게 해석되고 작동되는 지 살펴봅니다.
+XML과 유사한 문법을 제공하는 ECMAScript 확장인 JSX에 대해 학습합니다.
 
-- React 및 ReactDOM API 활용
-- 가상(Virtual) 노드 vs. 실제(Actual) DOM 노드
+- React 그리고 JSX
+- JSX vs. HTML 구조 설계
+- JSX의 역할 (creating React Element)
+- JSX 컴파일러
+- Babel
+- TypeScript
