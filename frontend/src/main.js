@@ -1,3 +1,9 @@
-import "./utils/supportJavaScript.js";
+import App from "./components/App.js";
 
-console.log("React 개발 시작하기! 😊");
+const reactDomRoot = ReactDOM.createRoot(document.getElementById("root"));
+
+reactDomRoot.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
