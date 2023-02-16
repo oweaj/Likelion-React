@@ -1,6 +1,7 @@
 import LogIn from "./pages/LogIn.js";
 import Browse from "./pages/Browse.js";
 import Home from "./pages/Home.js";
+import LikeLionMember from "./pages/likeLionMember.js";
 
 class App extends React.Component {
   state = {
@@ -38,6 +39,8 @@ class App extends React.Component {
     if (hasError) {
       return <div role="alert">{hasError.message}</div>;
     }
+
+    return <LikeLionMember />;
 
     return <Home />;
 
