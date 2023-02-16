@@ -12,9 +12,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-import LogIn from './pages/LogIn.js';
-import Browse from './pages/Browse.js';
-import Home from './pages/Home.js';
+import LogIn from "./pages/LogIn.js";
+import Browse from "./pages/Browse.js";
+import Home from "./pages/Home.js";
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
   var _super = _createSuper(App);
@@ -26,70 +26,26 @@ var App = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
-      // 사용자가 선언해서 쓰세요.
-      headline: 'React Application',
-      // isDisabled: false,
+      headline: "React Application",
       isPaid: true,
       isToggle: false,
       isLoading: !true,
-      hasError: null // { message: '서버에서 적절하지 않은 요청이 있었다는 응답이 있었습니다.' },
+      hasError: null
     });
-    _defineProperty(_assertThisInitialized(_this), "originalHeadline", _this.state.headline);
-    _defineProperty(_assertThisInitialized(_this), "willUpdateHeadline", 'NEW HEADLINE! 😃');
-    _defineProperty(_assertThisInitialized(_this), "unknown", null);
+    _defineProperty(_assertThisInitialized(_this), "newHeadline", "NEW HEADLINE!! 🚀");
+    _defineProperty(_assertThisInitialized(_this), "currHeadline", _this.state.headline);
     _defineProperty(_assertThisInitialized(_this), "handleChangeHeadline", function () {
-      // const { hasError: error } = this.state;
-
-      // 1. 문
-      // if (error === null || error === undefined) {
-      //   console.log('현재 앱에는 오류(error)가 발생하지 않았습니다.');
-      // }
-
-      // 2. 터너리
-      // (error === null || error === undefined) ? 
-      //   console.log('현재 앱에는 오류(error)가 발생하지 않았습니다.') : 
-      //   null;
-
-      // 3. null 병합 연산자
-      // error ?? console.log('현재 앱에는 오류(error)가 발생하지 않았습니다.');
-
-      // 옵셔널 체이닝을 사용해 조건 처리해봅니다.
-      // if (error) {
-      //   if (typeof error.log === 'function') {
-      //     error.log();
-      //   }
-      // }
-
-      // error && typeof error.log === 'function' && error.log();
-
-      // error.log?.();
-
-      // let error = {
-      //   log() {
-      //     console.log('this is logger')
-      //   }
-      // }
-
-      // 조건 처리
-      // 문을 사용할 것인가?
       if (_this.state.isToggle) {
         _this.setState({
           isToggle: false,
-          headline: _this.originalHeadline
+          headline: _this.currHeadline
         });
       } else {
         _this.setState({
           isToggle: true,
-          headline: _this.willUpdateHeadline
+          headline: _this.newHeadline
         });
       }
-
-      // 아니면 식을 사용할 것인가?
-
-      // this.setState({
-      //   headline: 'NEW HEADLINE! 😃',
-      //   isDisabled: true,
-      // });
     });
     return _this;
   }
@@ -97,27 +53,28 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$state = this.state,
+        isLoading = _this$state.isLoading,
         isToggle = _this$state.isToggle,
         isPaid = _this$state.isPaid,
-        headline = _this$state.headline;
-      if (this.state.isLoading) {
+        headline = _this$state.headline,
+        hasError = _this$state.hasError;
+      if (isLoading) {
         return /*#__PURE__*/React.createElement("div", {
           role: "alert"
         }, "\uB370\uC774\uD130 \uB85C\uB529 \uC911...");
       }
-      if (this.state.hasError) {
+      if (hasError) {
         return /*#__PURE__*/React.createElement("div", {
           role: "alert"
-        }, this.state.hasError.message);
+        }, hasError.message);
       }
       return /*#__PURE__*/React.createElement(Home, null);
       return /*#__PURE__*/React.createElement("div", {
         className: "App"
       }, /*#__PURE__*/React.createElement("h1", null, headline), /*#__PURE__*/React.createElement("button", {
-        // disabled={this.state.isDisabled}
         type: "button",
         onClick: this.handleChangeHeadline
-      }, isToggle ? '오리지널 헤드라인으로 변경' : '뉴 헤드라인으로 변경'), /*#__PURE__*/React.createElement(LogIn, null), isPaid && /*#__PURE__*/React.createElement(Browse, null));
+      }, isToggle ? "오리지널 헤드라인으로 변경" : "뉴 헤드라인으로 변경"), /*#__PURE__*/React.createElement(LogIn, null), isPaid && /*#__PURE__*/React.createElement(Browse, null));
     }
   }]);
   return App;
