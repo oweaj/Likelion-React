@@ -1,7 +1,2 @@
-@import "./_base.css";
-@import "./_layout.css";
-
-.is-active {
-  font-weight: 700;
-  color: tomato;
-}
+@import './_base.css';
+@import './_layout.css';
