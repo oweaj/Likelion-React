@@ -1,6 +1,6 @@
 import "./App.css";
 // import logo from "./assets/logo.svg";
-import { Counter } from "../components";
+import { CounterClass, CounterFunction } from "../components";
 
 // function App() {
 //   return (
@@ -22,8 +22,10 @@ import { Counter } from "../components";
 function App() {
   return (
     <div className="App">
-      <Counter step={1} />
-      <Counter step={5} max={100} min={1} count={0} />
+      <h2>함수 컴포넌트</h2>
+      <CounterFunction />
+      <h2>클래스 컴포넌트</h2>
+      <CounterClass />
     </div>
   );
 }

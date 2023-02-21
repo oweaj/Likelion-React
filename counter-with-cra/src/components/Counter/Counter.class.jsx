@@ -1,27 +1,28 @@
 import { Component } from "react";
+import styles from "./Counter.module.css";
 
 class Counter extends Component {
   static defaultProps = {
     min: 1,
     count: 1,
-    max: 10,
-    step: 1,
+    max: 50,
+    step: 5,
   };
 
   state = {
-    count: 1,
+    count: 0,
   };
 
   render() {
     const { count } = this.state;
 
     return (
-      <div className="counter">
-        <button type="button" aria-label="카운트 1 증가">
+      <div className={styles.container}>
+        <button type="button" onClick={this.handlerInc} aria-label="카운트 1 증가">
           +
         </button>
         <output aria-live="polite">{count}</output>
-        <button type="button" aria-label="카운트 1 감소">
+        <button type="button" onClick={this.handlerDec} aria-label="카운트 1 감소">
           -
         </button>
       </div>
@@ -34,7 +35,11 @@ class Counter extends Component {
     });
   };
 
-  handlerDec = () => {};
+  handlerDec = () => {
+    this.setState({
+      count: this.state.count - this.props.step,
+    });
+  };
 }
 
 export default Counter;

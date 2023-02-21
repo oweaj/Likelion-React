@@ -1,19 +1,24 @@
-import React from "react";
+import { useState } from "react";
+import styles from "./Counter.module.css";
 
-function Counter(props) {
-  let [count, setCount] = React.useState(props.count);
+function Counter({ min = 1, count: initialCount = 1, max = 10, step = 1 }) {
+  let [count, setCount] = useState(initialCount);
 
-  function handlerInc() {
-    console.log("업");
-    setCount(count + props.step);
-  }
-  function handlerDec() {
-    console.log("다운");
-    setCount(count - props.step);
-  }
+  // 화살표 함수이용
+  const handlerInc = () => setCount(count + step);
+  const handlerDec = () => setCount(count - step);
+
+  // function 이용
+  // function handlerInc() {
+  //   setCount(count + step);
+  // }
+  // function handlerDec() {
+  //   setCount(count - step);
+  // }
 
   return (
-    <div className="counter">
+    // Css 모듈 활용 (styles.클래스명)
+    <div className={styles.container}>
       <button type="button" onClick={handlerInc} aria-label="카운트 1 증가">
         +
       </button>
@@ -25,12 +30,12 @@ function Counter(props) {
   );
 }
 
-// static으로 함수 클래스 둘다 밖에서 선언 가능
-Counter.defaultProps = {
-  min: 1,
-  count: 20,
-  max: 10,
-  step: 1,
-};
+// static으로 함수 클래스 둘다 밖에서 선언 가능 (위에 기본값을 지정해둬서 주석처림)
+// Counter.defaultProps = {
+//   min: 1,
+//   initialCount: 1,
+//   max: 10,
+//   step: 1,
+// };
 
 export default Counter;
