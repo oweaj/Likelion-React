@@ -1,24 +1,7 @@
 import React from "react";
-import "./App.css";
-import { CounterClass, CounterFunction, LifeCycle } from "../components";
-// import logo from "./assets/logo.svg";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="React" />
-//         {/* <img src="./assets/logo.svg" className="App-logo" alt="React" /> 경로 적으면 안됨*/}
-//         <p>
-//           <code>src/App.js</code> 파일을 수정하면 <abbr title="Hot Module Replacement">HMR</abbr>, Live Reload 됩니다.
-//         </p>
-//         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import styles from "./App.module.css";
+import { ReactComponent as ReactLogo } from "assets/logo.svg";
+import { CounterClass, CounterFunction, LifeCycle, API_ENDPOINT } from "components";
 
 function renderComponents(isVisible) {
   if (isVisible) {
@@ -37,13 +20,22 @@ function renderComponents(isVisible) {
 }
 
 function App() {
+  // 상태 관리 훅
   // 상태 변수(state variable)
-  const [isVisibleComponents] = React.useState(false);
+  const [isVisibleComponents, updateIsVisibleComponents] = React.useState(false);
+
+  const handleToggleVisible = () => {
+    updateIsVisibleComponents(!isVisibleComponents);
+  };
 
   return (
-    <div className="App">
+    <div className={styles.container}>
+      <ReactLogo title="리액트 로고" />
+      <button type="button" onClick={handleToggleVisible}>
+        {isVisibleComponents.toString()}
+      </button>
       <h2>라이프 사이클</h2>
-      <LifeCycle />
+      {isVisibleComponents && <LifeCycle />}
       {renderComponents(isVisibleComponents)}
     </div>
   );
