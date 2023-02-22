@@ -1,16 +1,21 @@
 ###### EUID ╳ Likelion
 
-# 웹 브라우저 환경에서 React 시작하기
+# 상태가 없는 React 컴포넌트
 
-학습 저장소 자료 복사 ([degit](https://github.com/Rich-Harris/degit#readme) 활용)
+React 함수(재사용 용이. 클래스 보다 가벼움) 컴포넌트
 
-```sh
-degit yamoo9/likelion-react#01-react-browser 01-react-browser
-```
+- 상태(state)를 가지지 않음
+- Props에 의존하는 컴포넌트
+- 표현적인 컴포넌트
+- 마크업, 스타일링(레이아웃, 시각적 표현)
 
-## 학습 목표
+## 실습 컴포넌트
 
-React 라이브러리 코드가 웹 브라우저 환경에서 어떻게 해석되고 작동되는 지 살펴봅니다.
-
-- React 및 ReactDOM API 활용
-- 가상(Virtual) 노드 vs. 실제(Actual) DOM 노드
+- [ ] 인풋
+- [x] 토글 버튼
+- [x] 화면에서 감춰지지만, 접근성을 준수하는 컴포넌트
+  - a11yHidden
+  - readableHidden
+  - srOnly
+  - screenOff
+  - blind
