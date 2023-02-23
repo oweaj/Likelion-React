@@ -6,7 +6,7 @@ export const A11yHidden = ({
   className = "",
   ...restProps // 나머지 매개변수: { id, title, 'data-myName', children }
 }) => {
-  // classes.srOnly를 className에 넣으면 className의 값이 안보여짐 그래서 합성
+  // classes.srOnly를 className에 지정하고 className값을 따로 "myclassName"이라고 하면 "myclassName" 안보여짐 그래서 정적인 값과 동적인 값의  className의 합성이 필요함
   // 변수(문자 값) + ' ' + 변수(문자 값)
   // `${개발자의 클래스이름} ${사용자의 클래스이름}`
   const combinedClassNames = `${classes.srOnly} ${className}`.trim();
