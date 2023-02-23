@@ -1,12 +1,7 @@
 import classes from "./Button.module.css";
-// import { tokens } from "@/theme/tokens";
+import { getColor } from "@/theme/utils";
 
-// const { colors } = tokens;
-
-export function Button({ mode, ...restProps }) {
-  // props로부터 파생된 지역 변수 (렌더링 과는 아무 상관 없음)
-  let isPrimary = mode.includes("primary");
-
+export function Button({ mode, secondary: isSecondary, disabled, ...restProps }) {
   return (
     <button
       type="button"
