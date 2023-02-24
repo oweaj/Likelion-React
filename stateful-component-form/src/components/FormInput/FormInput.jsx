@@ -1,20 +1,38 @@
-import { useId } from "react";
+import { useId, useEffect, useRef } from "react";
 import { bool, string } from "prop-types";
 import { A11yHidden } from "@/components";
 import classes from "./FormInput.module.scss";
 
 /* Component ---------------------------------------------------------------- */
 
-export function FormInput({ label, type, invisibleLabel, vertical, inputed, ...restProps }) {
+export function FormInput({ label, type, invisibleLabel, vertical, ...restProps }) {
   const id = useId();
+  const inputRef = useRef(null);
   const combineClassNames = `${classes.FormInput} ${vertical ? classes.FormInputVertical : ""} ${
-    inputed ? classes.inputed : ""
+    inputRef.current?.value?.length > 0 ? classes.inputed : ""
   }`.trim();
+
+  useEffect(() => {
+    const input = inputRef.current;
+    const component = input.parentElement;
+
+    const addInputedClassName = () => {
+      component.classList.add(classes.inputed);
+    };
+
+    const removeInputedClassName = () => {
+      component.classList.remove(classes.inputed);
+    };
+
+    input.addEventListener("blur", (e) => {
+      e.target.value.length > 0 ? addInputedClassName() : removeInputedClassName();
+    });
+  }, []);
 
   return (
     <div className={combineClassNames}>
       {renderLabel(id, label, invisibleLabel)}
-      <input id={id} type={type} className={classes.input} {...restProps} />
+      <input ref={inputRef} id={id} type={type} className={classes.input} {...restProps} />
     </div>
   );
 }
