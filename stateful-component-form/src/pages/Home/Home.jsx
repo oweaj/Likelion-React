@@ -1,5 +1,5 @@
-import { BaseLayout } from '@/components';
-import classes from './Home.module.scss';
+import { BaseLayout } from "@/components";
+import classes from "./Home.module.scss";
 
 /* Component ---------------------------------------------------------------- */
 

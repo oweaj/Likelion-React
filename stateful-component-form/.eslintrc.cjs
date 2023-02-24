@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  // 권장 규칙 모음(패키지)
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -11,7 +12,6 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
   ],
-  overrides: [],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -20,8 +20,10 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "react-hooks", "jsx-a11y"],
+  // 개별 규칙 (사용자 정의)
   rules: {
     "no-unused-vars": "warn",
+    "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/anchor-has-content": [

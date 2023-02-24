@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { BaseLayout, FormInput, Button } from '@/components';
-import classes from './SignUp.module.scss';
+import { useState } from "react";
+import { BaseLayout, FormInput, Button } from "@/components";
+import classes from "./SignUp.module.scss";
 
 /* Intialization ------------------------------------------------------------ */
 
 const initialFormState = {
-  name: '',
-  email: '',
-  password: '',
-  passwordConfirm: '',
+  name: "",
+  email: "",
+  password: "",
+  passwordConfirm: "",
 };
 
 /* Component ---------------------------------------------------------------- */
@@ -19,24 +19,20 @@ export default function SignUp() {
   const handleReset = (e) => {
     e.preventDefault();
 
-    console.log('reset');
+    console.log("reset");
     setFormState(initialFormState);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('회원가입 시도 → Firebase Authentication');
+    console.log("회원가입 시도 → Firebase Authentication");
   };
 
   return (
     <BaseLayout className={classes.SignUp}>
       <h2>회원가입 페이지</h2>
-      <form
-        className={classes.form}
-        onSubmit={handleSubmit}
-        onReset={handleReset}
-      >
+      <form className={classes.form} onSubmit={handleSubmit} onReset={handleReset}>
         <FormInput
           vertical
           label="이름"
