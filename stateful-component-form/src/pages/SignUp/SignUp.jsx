@@ -4,23 +4,28 @@ import classes from "./SignUp.module.scss";
 
 /* Intialization ------------------------------------------------------------ */
 
-const initialFormState = {
-  name: "",
-  email: "",
-  password: "",
-  passwordConfirm: "",
-};
+// const initialFormState = {
+//   name: "",
+//   email: "",
+//   password: "",
+//   passwordConfirm: "",
+// };
 
 /* Component ---------------------------------------------------------------- */
 
+// 쓸데없는 렌더링을 막기위해 아래처럼 각각의 상태를 따로 관리(그래서 위에 객체 주석처리)
 export default function SignUp() {
-  const [formState, setFormState] = useState(initialFormState);
+  // const [formState, setFormState] = useState(initialFormState);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const handleReset = (e) => {
     e.preventDefault();
 
     console.log("reset");
-    setFormState(initialFormState);
+    // setFormState(initialFormState);
   };
 
   const handleSubmit = (e) => {
@@ -33,28 +38,22 @@ export default function SignUp() {
     <BaseLayout className={classes.SignUp}>
       <h2>회원가입 페이지</h2>
       <form className={classes.form} onSubmit={handleSubmit} onReset={handleReset}>
+        <FormInput label="이름" value={name} onChange={(e) => setName(e.target.value)} />
+
+        <FormInput type="email" label="이메일" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+        <FormInput type="password" label="패스워드" value={password} onChange={(e) => setPassword(e.target.value)} />
+
         <FormInput
-          vertical
-          label="이름"
-          value={formState.name}
-          inputed={formState.name.length > 0}
-          onChange={(e) => {
-            setFormState({
-              ...formState,
-              name: e.target.value,
-            });
-          }}
+          type="password"
+          label="패스워드 확인"
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
         />
-
-        <FormInput vertical type="email" label="이메일" />
-
-        <FormInput vertical type="password" label="패스워드" />
-
-        <FormInput vertical type="password" label="패스워드 확인" />
 
         <div className={classes.group}>
           <Button type="submit">회원가입</Button>
-          <Button secondary type="reset" disabled>
+          <Button secondary type="reset">
             초기화
           </Button>
         </div>

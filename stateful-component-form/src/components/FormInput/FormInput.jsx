@@ -1,22 +1,15 @@
-import { useId } from 'react';
-import { bool, string } from 'prop-types';
-import { A11yHidden } from '@/components';
-import classes from './FormInput.module.scss';
+import { useId } from "react";
+import { bool, string } from "prop-types";
+import { A11yHidden } from "@/components";
+import classes from "./FormInput.module.scss";
 
 /* Component ---------------------------------------------------------------- */
 
-export function FormInput({
-  label,
-  type,
-  invisibleLabel,
-  vertical,
-  inputed,
-  ...restProps
-}) {
+export function FormInput({ label, type, invisibleLabel, vertical, inputed, ...restProps }) {
   const id = useId();
-  const combineClassNames = `${classes.FormInput} ${
-    vertical ? classes.FormInputVertical : ''
-  } ${inputed ? classes.inputed : ''}`.trim();
+  const combineClassNames = `${classes.FormInput} ${vertical ? classes.FormInputVertical : ""} ${
+    inputed ? classes.inputed : ""
+  }`.trim();
 
   return (
     <div className={combineClassNames}>
@@ -29,7 +22,7 @@ export function FormInput({
 /* Props -------------------------------------------------------------------- */
 
 FormInput.defualtProps = {
-  type: 'text',
+  type: "text",
   invisibleLabel: false,
   vertical: false,
   inputed: false,
@@ -37,6 +30,7 @@ FormInput.defualtProps = {
 
 FormInput.propTypes = {
   type: string,
+  label: string.isRequired,
   invisibleLabel: bool,
   vertical: bool,
   inputed: bool,

@@ -23,7 +23,7 @@ module.exports = {
   // 개별 규칙 (사용자 정의)
   rules: {
     "no-unused-vars": "warn",
-    "react/prop-types": "off",
+    // "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/anchor-has-content": [
