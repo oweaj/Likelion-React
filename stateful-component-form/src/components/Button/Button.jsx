@@ -1,6 +1,6 @@
-import { bool } from 'prop-types';
-import { getColor } from '@/theme/utils';
-import classes from './Button.module.scss';
+import PropsTypes from "prop-types";
+import { getColor } from "@/theme/utils";
+import classes from "./Button.module.scss";
 
 /* Component ---------------------------------------------------------------- */
 
@@ -11,10 +11,8 @@ export function Button({ secondary: isSecondary, disabled, ...restProps }) {
       disabled={disabled}
       className={classes.Button}
       style={{
-        backgroundColor: !isSecondary
-          ? getColor('primary/400')
-          : getColor('white'),
-        color: !isSecondary ? getColor('white') : getColor('primary/400'),
+        backgroundColor: !isSecondary ? getColor("primary/400") : getColor("white"),
+        color: !isSecondary ? getColor("white") : getColor("primary/400"),
       }}
       {...restProps}
     />
@@ -29,6 +27,9 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  secondary: bool,
-  disabled: bool,
+  /** 버튼 모양을 두번째로 설정합니다 */
+  secondary: PropsTypes.bool,
+
+  /** 버튼을 비활성화 합니다. */
+  disabled: PropsTypes.bool,
 };
