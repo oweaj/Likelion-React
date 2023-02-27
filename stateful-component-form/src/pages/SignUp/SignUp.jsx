@@ -1,8 +1,11 @@
-import { useRef, useEffect } from "react";
+import { useRef /* useState */ } from "react";
 import { BaseLayout, FormInput, Button } from "@/components";
 import classes from "./SignUp.module.scss";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useMouse } from "@/hooks/useMouse";
+// import { EventSubUnsub } from '@/demo/EventSubUnsub';
+// import { validator } from '@/utils';
 
-/* Init --------------------------------------------------------------------- */
 const initialFormState = {
   name: "",
   email: "",
@@ -12,16 +15,20 @@ const initialFormState = {
 
 /* Component ---------------------------------------------------------------- */
 
-// useState vs useRef
+// useState vs. useRef
 // re-rendering (immutation) vs. re-rendering ❌ (mutation)
 
 export default function SignUp() {
-  const formStateRef = useRef(initialFormState);
+  // const [isVisible, setIsVisible] = useState(true);
+  // const [message, setMessage] = useState('before update');
 
-  useEffect(() => {
-    console.log("update sign up");
-    console.log(formStateRef);
-  });
+  useDocumentTitle("회원가입 → Likelion 4th");
+
+  const { x, y } = useMouse();
+
+  console.log(x, y);
+
+  const formStateRef = useRef(initialFormState);
 
   const handleReset = (e) => {
     e.preventDefault();
@@ -44,6 +51,21 @@ export default function SignUp() {
 
   return (
     <BaseLayout className={classes.SignUp}>
+      {/* {isVisible && <EventSubUnsub />}
+      <button type="button" onClick={() => setIsVisible(!isVisible)}>
+        {isVisible ? 'unmount' : 'mount'}
+      </button>
+      <p>{message}</p>
+      <button
+        type="button"
+        onClick={() =>
+          setMessage(
+            message.includes('before update') ? 'after update' : 'before update'
+          )
+        }
+      >
+        update
+      </button> */}
       <h2>회원가입 페이지</h2>
       <form className={classes.form} onSubmit={handleSubmit} onReset={handleReset}>
         <FormInput name="name" label="이름" onChange={handleChangeInput} />
