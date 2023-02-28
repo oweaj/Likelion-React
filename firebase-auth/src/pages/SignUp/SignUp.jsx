@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { BaseLayout, FormInput, Button } from '@/components';
-import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { BaseLayout, FormInput, Button, Notification } from '@/components';
+import { useDocumentTitle, useToggle } from '@/hooks';
 import classes from './SignUp.module.scss';
 import { createAuthUser } from '@/firebase/auth';
 
@@ -15,6 +15,9 @@ const initialFormState = {
 
 export default function SignUp() {
   useDocumentTitle('회원가입 → Likelion 4th');
+
+  // useToggle 커스텀 훅
+  const { toggle, onToggle, offToggle } = useToggle();
 
   const formStateRef = useRef(initialFormState);
 
@@ -51,6 +54,7 @@ export default function SignUp() {
   return (
     <BaseLayout className={classes.SignUp}>
       <h2>회원가입 페이지</h2>
+
       <form
         className={classes.form}
         onSubmit={handleSubmit}
@@ -86,6 +90,14 @@ export default function SignUp() {
           </Button>
         </div>
       </form>
+
+      <Notification show={toggle} onClose={offToggle}>
+        이미 가입된 이메일입니다.
+      </Notification>
+
+      <button type="button" onClick={onToggle}>
+        노티피케이션 열기
+      </button>
     </BaseLayout>
   );
 }
