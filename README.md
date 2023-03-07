@@ -1,5 +1,14 @@
 ###### EUID ╳ Likelion
 
-# Firebase 인증(Authentication)
+## Recoil
 
-Firebase 백앤드 서비스를 이용해 회원가입, 로그인, 로그아웃 절차를 학습합니다.
+리코일(Recoil)을 사용해 React 앱 상태를 관리하는 방법을 학습합니다.
+
+- [ ] Atoms
+- [ ] Selectors
+- [ ] AtomFamily
+- [ ] SelectorFamily
+- [ ] useRecoilState
+- [ ] useRecoilValue
+- [ ] useSetRecoilState
+- [ ] useRecoilValueLoadable
